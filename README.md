@@ -13,6 +13,8 @@ Please refer to [rotowire-modified](https://github.com/aistairc/rotowire-modifie
 ```
 ./setup.sh
 DATA=<path to the rotowire-modified directory>
+ANNOTAION=<path to the text annotation file for training>
+VOCAB=<path to the vocablary file>
 python make_data.py $DATA $ANNOTATION $VOCAB
 ```
 The annotation file could be obtained from information extractor.
@@ -24,8 +26,7 @@ python reporter.py train $VOCAB --valid_file $DATA/valid.json
 
 ### Decode
 ```
-$VOCAB_FP=<path to the vocablary file>
-$MODEL_FP=<path to the trained model file>
+MODEL=<path to the trained model file>
 python reporter.py decode $VOCAB $MODEL $DATA/test.json
 ```
 
