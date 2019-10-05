@@ -30,7 +30,7 @@ MODEL=<path to the trained model file>
 python reporter.py decode $VOCAB $MODEL $DATA/test.json
 ```
 
-## Updated Results
+## Updated Results for RotoWire-modified
 
 | without writer info | RG (P% / #) | CS (P% / R%)| CO  |BLEU |
 |---------------------|:-----------:|:-----------:|:---:|:---:|
