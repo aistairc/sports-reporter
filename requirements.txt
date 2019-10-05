@@ -1,0 +1,5 @@
+click
+dynet
+nltk
+numpy
+tqdm
