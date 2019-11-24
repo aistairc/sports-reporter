@@ -70,4 +70,5 @@ When you write a paper using this code, please cite the followings.
     title = {Learning to Select, Track, and Generate for Data-to-Text},
     booktitle = {Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL)},
     year = {2019}
+}
 ```
