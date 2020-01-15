@@ -1,5 +1,9 @@
 # Sports Reporter
 
+[![Conference](https://img.shields.io/badge/acl-2019-red)](https://www.aclweb.org/anthology/P19-1202/)
+[![arXiv](https://img.shields.io/badge/arxiv-1907.09699-critical)](https://arxiv.org/abs/1907.09699)
+[![Poster](https://img.shields.io/badge/poster-pdf-informational)](http://sociocom.jp/~iso/posters/iso2019acl.pdf)
+
 Python code for Learning to Select, Track, and Generate for Data-to-Text (Iso et al; ACL 2019).
 
 
@@ -9,25 +13,40 @@ Please refer to [rotowire-modified](https://github.com/aistairc/rotowire-modifie
 
 ## Usage
 
+## Dependencies
+- The code was written for Python 3.X and requires DyNet.
+- Dependencies can be installed using `requirements.txt`.
+- For running information extractor, you should install [torch](http://torch.ch/).
+
 ## Preprocessing
+Before starting an experiment, you should run our provided `setup.sh`.
 ```
 ./setup.sh
-DATA=<path to the rotowire-modified directory>
-ANNOTAION=<path to the text annotation file for training>
-VOCAB=<path to the vocablary file>
-python make_data.py $DATA $ANNOTATION $VOCAB
 ```
-The annotation file could be obtained from information extractor.
+
+After that, you can make the annotation file for training data via information extractor:
+```
+cd ./data2text-1
+cat ../rotowire_v2/train.json | python -c 'import sys, json, nltk; print("\n".join(" ".join(nltk.word_tokenize(" ".join(x["summary"]))) for x in json.load(sys.stdin)))' > ../rotowire_v2/train_summary.txt
+python data_utils.py -mode prep_gen_data -gen_fi ../rotowire_v2/train_summary.txt -dict_pfx "rotowire-modified-ie" -output_fi train_gold.h5 -input_path "../rotowire_v2" -train
+th extractor.lua -gpuid 1 -datafile rotowire-modified-ie.h5 -preddata train_gold.h5 -dict_pfx "rotowire-modified-ie" -just_eval
+```
+Then, you can see the annotation file `train_gold.h5-tuples.txt` and make a vocab file for training.
+```
+cd ..
+VOCAB=<path to the vocablary file>
+python make_data.py ./rotowire_v2 ./data2text-1/train_gold.h5-tuples.txt $VOCAB
+```
 
 ### Train model
 ```
-python reporter.py train $VOCAB --valid_file $DATA/valid.json
+python reporter.py train $VOCAB --valid_file ./rotowire_v2/valid.json
 ```
 
 ### Decode
 ```
 MODEL=<path to the trained model file>
-python reporter.py decode $VOCAB $MODEL $DATA/test.json
+python reporter.py decode $VOCAB $MODEL ./rotowire_v2/test.json
 ```
 
 ## Updated Results for RotoWire-modified
@@ -52,7 +71,7 @@ python reporter.py decode $VOCAB $MODEL $DATA/test.json
 
 
 ## License and References
-This code is available under the MIT Licence, see LICENCE
+This code is available under the MIT Licence, see [LICENCE](https://github.com/aistairc/sports-reporter/blob/master/LICENCE)
 
 When you write a paper using this code, please cite the followings.
 
@@ -70,5 +89,5 @@ When you write a paper using this code, please cite the followings.
     title = {Learning to Select, Track, and Generate for Data-to-Text},
     booktitle = {Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL)},
     year = {2019}
-}
+  }
 ```
