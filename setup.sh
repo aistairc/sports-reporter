@@ -16,7 +16,7 @@ rm -rf boxscore-data rotowire
 # Setup IE model
 git clone https://github.com/ratishsp/data2text-1.git
 cd data2text-1
-wget https://plu-aist.s3-ap-northeast-1.amazonaws.com/sports-reporter/ie-rotowire-modified.tar.gz
+cat ../ie/ie-rotowire-modified.z0* > ie-rotowire-modified.tar.gz
 tar -xzvf ie-rotowire-modified.tar.gz --strip=1
 patch -p1 < rotowire-modified-ie.patch
 
@@ -24,7 +24,7 @@ rm ie-rotowire-modified.tar.gz
 cd ..
 
 # Download vocab file and model dump
-wget https://plu-aist.s3-ap-northeast-1.amazonaws.com/sports-reporter/dump.tar.gz
+cat ./dump/dump.z0* > dump.tar.gz
 tar -xzvf dump.tar.gz
 rm dump.tar.gz
 
