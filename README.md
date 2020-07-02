@@ -2,7 +2,7 @@
 
 [![Conference](https://img.shields.io/badge/acl-2019-red)](https://www.aclweb.org/anthology/P19-1202/)
 [![arXiv](https://img.shields.io/badge/arxiv-1907.09699-critical)](https://arxiv.org/abs/1907.09699)
-[![Poster](https://img.shields.io/badge/poster-pdf-informational)](http://sociocom.jp/~iso/posters/iso2019acl.pdf)
+[![Poster](https://img.shields.io/badge/poster-pdf-informational)](https://isomap.github.io/posters/iso2019acl.pdf)
 
 Python code for Learning to Select, Track, and Generate for Data-to-Text (Iso et al; ACL 2019).
 
@@ -69,7 +69,6 @@ python reporter.py decode $VOCAB $MODEL ./rotowire_v2/test.json
 |Iso+, ACL'19         |91.98 / 31.66|40.44 / 46.63|21.56|15.74|
 |+ writer             |93.32 / 29.44|51.76 / 55.21|24.97|20.62|
 
-
 ## License and References
 This code is available under the MIT Licence, see [LICENCE](https://github.com/aistairc/sports-reporter/blob/master/LICENCE)
 
@@ -91,3 +90,7 @@ When you write a paper using this code, please cite the followings.
     year = {2019}
   }
 ```
+
+
+## Author
+@isomap
