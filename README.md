@@ -93,4 +93,4 @@ When you write a paper using this code, please cite the followings.
 
 
 ## Author
-@isomap
+[@isomap](https://github.com/isomap/)
