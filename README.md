@@ -1,7 +1,7 @@
 # Sports Reporter
 
 [![Conference](https://img.shields.io/badge/acl-2019-red)](https://www.aclweb.org/anthology/P19-1202/)
-[![arXiv](https://img.shields.io/badge/arxiv-1907.09699-critical)](https://arxiv.org/abs/1907.09699)
+[![arXiv](https://img.shields.io/badge/arxiv-1907.09699-success)](https://arxiv.org/abs/1907.09699)
 [![Poster](https://img.shields.io/badge/poster-pdf-informational)](https://isomap.github.io/posters/iso2019acl.pdf)
 
 Python code for Learning to Select, Track, and Generate for Data-to-Text (Iso et al; ACL 2019).
